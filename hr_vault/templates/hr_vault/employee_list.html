@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-add {
+            background: #28a745;
+        }
+
+        .btn-logout {
+            background: #dc3545;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .meta {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .empty {
+            text-align: center;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        .salary {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>📋 Employee Records</h2>
+
+    <div class="top-bar">
+        <a href="/hr/add/" class="btn btn-add">+ Add Employee</a>
+        <a href="/logout/" class="btn btn-logout">Logout</a>
+    </div>
+
+    {% for record in records %}
+        <div class="card">
+            <strong>{{ record.employee_name }}</strong><br>
+            Department: {{ record.department }}<br>
+
+            <!-- Optional masking (basic security UX) -->
+            Salary: <span class="salary">₱{{ record.annual_salary }}</span><br>
+
+            <div class="meta">
+                Added by: {{ record.added_by.username }}
+            </div>
+        </div>
+    {% empty %}
+        <p class="empty">No employee records found.</p>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

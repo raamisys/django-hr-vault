@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - HR Vault</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .footer {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>🔐 HR Vault Login</h2>
+
+    {% if form.errors %}
+        <p class="error">Invalid username or password</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Custom styled fields -->
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <input type="hidden" name="next" value="{{ next|default:'/hr/' }}">
+
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="footer">
+        Secure Access Only
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .back {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>➕ Add Employee</h2>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+
+        <input type="text" name="employee_name" placeholder="Employee Name" required>
+        <input type="text" name="department" placeholder="Department" required>
+        <input type="text" name="bank_account_number" placeholder="Bank Account Number" required>
+        <input type="number" name="annual_salary" placeholder="Annual Salary" required>
+
+        <button type="submit">Save Record</button>
+    </form>
+
+    <a href="/hr/" class="back">← Back to Records</a>
+</div>
+
+</body>
+</html>
